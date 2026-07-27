@@ -172,7 +172,7 @@ const AdvancedLoader: React.FC = () => {
   );
 };
 
-// ==================== FAMILY TREE SECTION (World-Class & Responsive Fix) ====================
+
 
 
 // ==================== NAVIGATION ====================
@@ -290,12 +290,7 @@ const Navigation: React.FC<{
           >
             {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
           </button>
-          {/* <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-            className="p-3 rounded-xl bg-pink-500 text-white hover:bg-pink-600 transition-colors"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button> */}
+         
         </div>
       </div>
 
@@ -342,7 +337,7 @@ const HeroSection: React.FC<SectionProps & { onOpenVideo: () => void; lang: 'fa'
       </div>
       <motion.div className="container mx-auto px-6 relative z-10 text-center">
         <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={isVisible ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.8, type: "spring" }} className="mb-8">
-          {/* تصویر اصلاح شده و پایدار */}
+  
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfyInIoxMLJzgbN89lclNIfuupxskHz0wOZfIylswNLg&s=10" alt="Mother and Child"
             className="w-50  mt-20 mx-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-700" />
         </motion.div>
@@ -404,7 +399,7 @@ const AboutSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisibl
             <div className="relative">
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-pink-200 dark:bg-pink-900/50 rounded-full opacity-50 blur-3xl" />
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-200 dark:bg-purple-900/50 rounded-full opacity-50 blur-3xl" />
-              {/* تصویر اصلاح شده و پایدار */}
+        
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUJS2y0jiZEHXEb9K5U0Q-mHTBUEvLUuGjaJCVPwH_Mg&s=10" alt="About Mother" className="relative rounded-3xl shadow-2xl w-full" />
               <motion.div className="absolute -bottom-8 -right-8 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-2xl" whileHover={{ scale: 1.1, rotate: 5 }}>
                 <div className="text-4xl font-bold text-pink-600">+{lang === 'fa' ? '۰' : '20'}</div>
@@ -471,7 +466,7 @@ const GallerySection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisi
   const [filter, setFilter] = useState('all');
   const t = translations[lang].gallery;
   const categories = [{ id: 'all', label: t.all }, { id: 'mother', label: t.mother }, { id: 'family', label: t.family }, { id: 'event', label: t.event }];
-  // لینک‌های تصویر اصلاح شده و پایدار
+  
   const images = [
     { url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-2iXRKg_SB8wv9Gebjpidc0M9f0edyV1TjImGILBCyg&s=10', category: 'mother', title: lang === 'fa' ? 'لحظات ناب' : 'Pure Moments' },
     { url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwO2aNmJRfhY0z8tGjkTvgDg7LTbvxMaszXIRH1eS6vg&s=10', category: 'family', title: lang === 'fa' ? 'محبت مادرانه' : 'Motherly Affection' },
@@ -636,7 +631,7 @@ const TeamSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible
 
 // ==================== FAQ SECTION ====================
 const FAQSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
-  // تغییر ۱: مقدار اولیه null گذاشتم تا اول کار هیچکدام باز نباشند (اختیاری)
+  
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   
   const t = translations[lang].faq;
@@ -878,15 +873,15 @@ const UltimateMotherWebsite: React.FC = () => {
 
   useEffect(() => {
     if (!isLoading) {
-      // تغییر منطق: حالا وقتی بخش از دید خارج شود، isVisible آن false می‌شود (بسته می‌شود)
+      
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           setVisibleSections(prev => ({
             ...prev,
-            [entry.target.id]: entry.isIntersecting // true وقتی وارد شد، false وقتی خارج شد
+            [entry.target.id]: entry.isIntersecting  
           }));
         });
-      }, { threshold: 0.15 }); // وقتی 15% بخش دیده شد فعال شود
+      }, { threshold: 0.15 }); 
 
       document.querySelectorAll('section[id]').forEach((section) => {
         observer.observe(section);
