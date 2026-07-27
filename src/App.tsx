@@ -9,7 +9,7 @@ import {
 import { FaInstagram, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 import amir from './assets/Gemini_Generated_Image_nl20y0nl20y0nl20.png'
 import video from './assets/dfvdd.mp4'
-// ==================== TYPES & INTERFACES ====================
+
 interface SectionProps {
   isVisible: boolean;
 }
@@ -48,7 +48,7 @@ interface FAQItem {
 
 
 
-// ==================== TRANSLATIONS ====================
+// TRANSLATIONS 
 const translations = {
   fa: {
     nav: { home: 'صفحه اصلی', about: 'درباره ما', services: 'خدمات', gallery: 'گالری', tree: 'شجره عشق', timeline: 'داستان', testimonials: 'نظرات', team: 'تیم', faq: 'سوالات', contact: 'تماس' },
@@ -84,7 +84,7 @@ const translations = {
   }
 };
 
-// ==================== VIDEO MODAL COMPONENT ====================
+//  VIDEO MODAL COMPONEN
 const VideoModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const videoUrl = video;
 
@@ -130,7 +130,7 @@ const VideoModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen
   );
 };
 
-// ==================== 3D LOADING COMPONENT ====================
+//  3D LOADING COMPONENT 
 const AdvancedLoader: React.FC = () => {
   const [progress, setProgress] = useState(0);
   useEffect(() => {
@@ -175,7 +175,7 @@ const AdvancedLoader: React.FC = () => {
 
 
 
-// ==================== NAVIGATION ====================
+// NAVIGATION
 const Navigation: React.FC<{ 
   lang: 'fa' | 'en'; 
   setLang: (l: 'fa' | 'en') => void; 
@@ -324,7 +324,7 @@ const Navigation: React.FC<{
   );
 };
 
-// ==================== HERO SECTION ====================
+//  HERO SECTION 
 const HeroSection: React.FC<SectionProps & { onOpenVideo: () => void; lang: 'fa' | 'en' }> = ({ isVisible, onOpenVideo, lang }) => {
   const t = translations[lang].hero;
   return (
@@ -361,7 +361,7 @@ const HeroSection: React.FC<SectionProps & { onOpenVideo: () => void; lang: 'fa'
   );
 };
 
-// ==================== STATS SECTION ====================
+//STATS SECTION 
 const StatsSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   const t = translations[lang].stats;
   const stats: StatCard[] = [
@@ -388,7 +388,7 @@ const StatsSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisibl
   );
 };
 
-// ==================== ABOUT SECTION ====================
+// ABOUT SECTION 
 const AboutSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   const t = translations[lang].about;
   return (
@@ -422,7 +422,7 @@ const AboutSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisibl
   );
 };
 
-// ==================== SERVICES SECTION ====================
+// SERVICES SECTION 
 const ServicesSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   const t = translations[lang].services;
   const services: ServiceCard[] = [
@@ -461,7 +461,7 @@ const ServicesSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVis
   );
 };
 
-// ==================== GALLERY SECTION ====================
+// GALLERY SECTION
 const GallerySection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   const [filter, setFilter] = useState('all');
   const t = translations[lang].gallery;
@@ -509,7 +509,7 @@ const GallerySection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisi
   );
 };
 
-// ==================== TIMELINE SECTION ====================
+// TIMELINE SECTION 
 const TimelineSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   const t = translations[lang].timeline;
   const events: TimelineEvent[] = [
@@ -548,7 +548,7 @@ const TimelineSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVis
   );
 };
 
-// ==================== TESTIMONIALS SECTION ====================
+// TESTIMONIALS SECTION 
 const TestimonialsSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const t = translations[lang].testimonials;
@@ -591,7 +591,7 @@ const TestimonialsSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ i
   );
 };
 
-// ==================== TEAM SECTION ====================
+//  TEAM SECTION 
 const TeamSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   const t = translations[lang].team;
   const team = [
@@ -629,7 +629,7 @@ const TeamSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible
   );
 };
 
-// ==================== FAQ SECTION ====================
+//FAQ SECTION 
 const FAQSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -653,7 +653,7 @@ const FAQSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible,
           {faqs.map((faq, index) => (
             <motion.div key={index} initial={{ opacity: 0, y: 20 }} animate={isVisible ? { opacity: 1, y: 0 } : {}} transition={{ delay: index * 0.1 }}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700">
-              {/* منطق کلیک شما کاملاً درست است و باعث بسته شدن بقیه می‌شود */}
+             
               <button onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full px-8 py-6 text-right flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                 <span className="text-xl font-bold text-gray-800 dark:text-white">{faq.question}</span>
@@ -661,7 +661,7 @@ const FAQSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible,
               </button>
               <AnimatePresence>
                 {openIndex === index && (
-                  // تغییر ۲: در exit مقدار opacity را به 0 تغییر دادم تا انیمیشن بسته شدن نرم باشد
+  
                   <motion.div 
                     initial={{ height: 0, opacity: 0 }} 
                     animate={{ height: 'auto', opacity: 1 }} 
@@ -681,7 +681,7 @@ const FAQSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible,
   );
 };
 
-// ==================== CONTACT SECTION ====================
+// CONTACT SECTION 
 const ContactSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const t = translations[lang].contact;
@@ -746,7 +746,7 @@ const ContactSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisi
   );
 };
 
-// ==================== NEWSLETTER SECTION ====================
+//  NEWSLETTER SECTION 
 const NewsletterSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
   const [email, setEmail] = useState('');
   const t = translations[lang].newsletter;
@@ -769,7 +769,7 @@ const NewsletterSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isV
   );
 };
 
-// ==================== FOOTER ====================
+// FOOTER 
 const Footer: React.FC<{ lang: 'fa' | 'en' }> = ({ lang }) => {
   const t = translations[lang].footer;
   const nav = translations[lang].nav;
@@ -809,7 +809,7 @@ const Footer: React.FC<{ lang: 'fa' | 'en' }> = ({ lang }) => {
           </div>
         </div>
         
-        {/* بخش اختصاصی سازنده */}
+        
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col items-center gap-4">
           <img 
             src={amir} 
@@ -837,7 +837,7 @@ const Footer: React.FC<{ lang: 'fa' | 'en' }> = ({ lang }) => {
   );
 };
 
-// ==================== BACK TO TOP BUTTON ====================
+// BACK TO TOP BUTTON 
 const BackToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -858,7 +858,7 @@ const BackToTop: React.FC = () => {
   );
 };
 
-// ==================== MAIN COMPONENT ====================
+//  MAIN COMPONENT 
 const UltimateMotherWebsite: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [visibleSections, setVisibleSections] = useState<Record<string, boolean>>({});
