@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { FaInstagram, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 import amir from './assets/Gemini_Generated_Image_nl20y0nl20y0nl20.png'
+import video from './assets/dfvdd.mp4'
 // ==================== TYPES & INTERFACES ====================
 interface SectionProps {
   isVisible: boolean;
@@ -85,7 +86,7 @@ const translations = {
 
 // ==================== VIDEO MODAL COMPONENT ====================
 const VideoModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
-  const videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0";
+  const videoUrl = video;
 
   return (
     <AnimatePresence>
@@ -279,13 +280,13 @@ const Navigation: React.FC<{
         <div className="lg:hidden flex items-center gap-2">
           <button 
             onClick={() => setLang(lang === 'fa' ? 'en' : 'fa')}
-            className="p-3 rounded-xl bg-white/20 dark:bg-gray-800 text-white dark:text-gray-300 hover:bg-white/30 transition-colors backdrop-blur-sm"
+            className="p-2 rounded-xl bg-white/20 dark:bg-gray-800 text-black dark:text-white hover:bg-white/30 transition-colors backdrop-blur-sm"
           >
             <Globe className="w-5 h-5" />
           </button>
           <button 
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-            className="p-3 rounded-xl bg-white/20 dark:bg-gray-800 text-white dark:text-gray-300 hover:bg-white/30 transition-colors backdrop-blur-sm"
+            className="p-2 rounded-xl bg-white/20 dark:bg-gray-800 text-black dark:text-white hover:bg-white/30 transition-colors backdrop-blur-sm"
           >
             {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
           </button>
@@ -635,7 +636,9 @@ const TeamSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible
 
 // ==================== FAQ SECTION ====================
 const FAQSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible, lang }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  // تغییر ۱: مقدار اولیه null گذاشتم تا اول کار هیچکدام باز نباشند (اختیاری)
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  
   const t = translations[lang].faq;
   const faqs: FAQItem[] = [
     { question: lang === 'fa' ? 'چگونه می‌توانم نوبت عکس‌برداری بگیرم؟' : 'How can I book a photography session?', answer: lang === 'fa' ? 'می‌توانید از طریق فرم تماس یا تماس تلفنی با ما در ارتباط باشید.' : 'You can contact us via the contact form or phone call.' },
@@ -655,6 +658,7 @@ const FAQSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible,
           {faqs.map((faq, index) => (
             <motion.div key={index} initial={{ opacity: 0, y: 20 }} animate={isVisible ? { opacity: 1, y: 0 } : {}} transition={{ delay: index * 0.1 }}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700">
+              {/* منطق کلیک شما کاملاً درست است و باعث بسته شدن بقیه می‌شود */}
               <button onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full px-8 py-6 text-right flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                 <span className="text-xl font-bold text-gray-800 dark:text-white">{faq.question}</span>
@@ -662,7 +666,14 @@ const FAQSection: React.FC<SectionProps & { lang: 'fa' | 'en' }> = ({ isVisible,
               </button>
               <AnimatePresence>
                 {openIndex === index && (
-                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="px-8 pb-6">
+                  // تغییر ۲: در exit مقدار opacity را به 0 تغییر دادم تا انیمیشن بسته شدن نرم باشد
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }} 
+                    animate={{ height: 'auto', opacity: 1 }} 
+                    exit={{ height: 0, opacity: 0 }} 
+                    transition={{ duration: 0.3 }} 
+                    className="px-8 pb-6"
+                  >
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{faq.answer}</p>
                   </motion.div>
                 )}
@@ -808,11 +819,11 @@ const Footer: React.FC<{ lang: 'fa' | 'en' }> = ({ lang }) => {
           <img 
             src={amir} 
             alt="Amirali Mohammadi" 
-            className="w-16 h-16 rounded-full border-2 border-pink-500 object-cover shadow-lg hover:scale-110 transition-transform duration-300 animate-bounce"
+            className="w-26 h-26 rounded-full border-2 border-pink-500 object-cover shadow-lg hover:scale-110 transition-transform duration-300 animate-bounce"
           />
           <div className="flex items-center gap-2 text-gray-300">
-            <Code className="w-4 h-4 text-pink-500" />
-            <a href='https://amirresume.netlify.app' target='_blank' className="text-sm font-medium tracking-wide">{t.creator}</a>
+            <Code className="w-6 h-6 text-pink-500 animate-bounce" />
+            <a href='https://amirresume.netlify.app' target='_blank' className="text-[25px] font-medium tracking-wide text-cyan-500 animate-bounce ">{t.creator}</a>
           </div>
         </div>
 
